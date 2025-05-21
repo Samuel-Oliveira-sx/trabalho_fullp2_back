@@ -1,0 +1,17 @@
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\obj\Debug\net8.0\AcademiaApp.servico.csproj.AssemblyReference.cache
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\obj\Debug\net8.0\AcademiaApp.servico.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\obj\Debug\net8.0\AcademiaApp.servico.AssemblyInfoInputs.cache
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\obj\Debug\net8.0\AcademiaApp.servico.AssemblyInfo.cs
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\obj\Debug\net8.0\AcademiaApp.servico.csproj.CoreCompileInputs.cache
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\bin\Debug\net8.0\AcademiaApp.servico.deps.json
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\bin\Debug\net8.0\AcademiaApp.servico.dll
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\bin\Debug\net8.0\AcademiaApp.servico.pdb
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\bin\Debug\net8.0\AcademiaApp.dominio.dll
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\bin\Debug\net8.0\AcademiaApp.repositorio.dll
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\bin\Debug\net8.0\AcademiaApp.repositorio.pdb
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\bin\Debug\net8.0\AcademiaApp.dominio.pdb
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\obj\Debug\net8.0\Academia.E01E8F83.Up2Date
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\obj\Debug\net8.0\AcademiaApp.servico.dll
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\obj\Debug\net8.0\refint\AcademiaApp.servico.dll
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\obj\Debug\net8.0\AcademiaApp.servico.pdb
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\obj\Debug\net8.0\ref\AcademiaApp.servico.dll

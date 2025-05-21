@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "sGjb8bYhXEjIGakRUtBETXmtNMoGcOpXKkr3vWj5a1Q=",
+  "Source": "AcademiaApp.WebApi",
+  "BasePath": "_content/AcademiaApp.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
