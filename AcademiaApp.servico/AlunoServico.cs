@@ -1,38 +1,56 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AcademiaApp.Dominio;
 using AcademiaApp.Repositorio;
 
-namespace AcademiaApp.servico
+namespace AcademiaApp.Servico
 {
     public interface IAlunoServico
     {
-        Task<Aluno> ObterAlunoAsync(int id);
+        Task<Aluno?> ObterPorIdAsync(int? id); // ID agora é opcional
+        Task<IEnumerable<Aluno>> ObterTodosAsync();
         Task CadastrarAlunoAsync(Aluno aluno);
         Task AtualizarAlunoAsync(Aluno aluno);
         Task RemoverAlunoAsync(int id);
-        bool VerificarPlanoAtivo(int id);
+        Task<Aluno?> ObterAlunoPorNomeAsync(string nome);
+        Task<IEnumerable<Aluno>> ObterOuTodosAsync(int? id = null); // Novo método flexível
     }
 
-    public class AlunoService : IAlunoServico
+    public class AlunoServico : IAlunoServico
     {
-        private readonly IAlunoRepositorio _repositorio;
+        private readonly AlunoRepositorio _repositorio;
 
-        public AlunoService(IAlunoRepositorio repositorio)
+        public AlunoServico(AlunoRepositorio repositorio)
         {
             _repositorio = repositorio;
         }
 
-        public async Task<Aluno> ObterAlunoAsync(int id)
+        public async Task<Aluno?> ObterPorIdAsync(int? id)
         {
-            return await _repositorio.ObterPorIdAsync(id);
+            if (!id.HasValue)
+                return null; // Retorna null se o ID não for fornecido
+
+            return await _repositorio.ObterPorIdAsync(id.Value);
+        }
+
+        public async Task<IEnumerable<Aluno>> ObterTodosAsync()
+        {
+            return await _repositorio.ObterTodosAsync();
+        }
+
+        public async Task<IEnumerable<Aluno>> ObterOuTodosAsync(int? id = null)
+        {
+            return id.HasValue
+                ? new List<Aluno> { await ObterPorIdAsync(id.Value) ?? new Aluno() }
+                : await ObterTodosAsync();
         }
 
         public async Task CadastrarAlunoAsync(Aluno aluno)
         {
             if (string.IsNullOrEmpty(aluno.Nome))
-                throw new Exception("O nome do aluno é obrigatório.");
+                throw new ArgumentException("O nome do aluno é obrigatório.");
 
             await _repositorio.AdicionarAsync(aluno);
         }
@@ -47,10 +65,9 @@ namespace AcademiaApp.servico
             await _repositorio.RemoverAsync(id);
         }
 
-        public bool VerificarPlanoAtivo(int id)
+        public async Task<Aluno?> ObterAlunoPorNomeAsync(string nome)
         {
-            var aluno = _repositorio.ObterPorIdAsync(id).Result;
-            return aluno?.TemPlanoAtivo() ?? false;
+            return await _repositorio.ObterPorNomeAsync(nome);
         }
     }
 }

@@ -1,32 +1,46 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System;
+using System.Text.Json.Serialization;
 
 namespace AcademiaApp.Dominio
 {
     public class Aluno
     {
+        [JsonPropertyName("id")]
         public int Id { get; set; }
+
+        [JsonPropertyName("nome")]
         public string Nome { get; set; } = string.Empty;
+
+        [JsonPropertyName("email")]
         public string Email { get; set; } = string.Empty;
+
+        [JsonPropertyName("senha")]
+        public string Senha { get; set; }
+
+        [JsonPropertyName("cpf")]
+        public string CPF { get; set; }
+
+        [JsonPropertyName("dataNascimento")]
         public DateTime DataNascimento { get; set; }
-        public List<string> PlanosAtivos { get; set; } = new();
+
+        [JsonPropertyName("dataMatricula")]
         public DateTime DataMatricula { get; set; }
+
+        [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }
 
-        public Aluno(string nome, string email, DateTime dataNascimento, DateTime dataMatricula)
+        public Aluno(string cpf, string nome, string email, string senha, DateTime dataNascimento, DateTime dataMatricula)
         {
+            CPF = cpf;
             Nome = nome;
             Email = email;
+            Senha = senha;
             DataNascimento = dataNascimento;
             DataMatricula = dataMatricula;
-            Ativo = true; 
+            Ativo = true;
         }
 
-        public bool TemPlanoAtivo()
-        {
-            return PlanosAtivos.Count > 0;
-        }
+        public Aluno() { }
 
         public int CalcularIdade()
         {
@@ -39,7 +53,6 @@ namespace AcademiaApp.Dominio
         public void CancelarMatricula()
         {
             Ativo = false;
-            PlanosAtivos.Clear(); 
         }
     }
 }

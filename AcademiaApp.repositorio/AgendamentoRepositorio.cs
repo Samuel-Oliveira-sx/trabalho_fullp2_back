@@ -9,9 +9,9 @@ namespace AcademiaApp.Repository
 {
     public class AgendamentoRepositorio : IAgendamentoRepositorio
     {
-        private readonly AppDbContext _context;
+        private readonly AcademiaDbContext _context;
 
-        public AgendamentoRepositorio(AppDbContext context)
+        public AgendamentoRepositorio(AcademiaDbContext context)
         {
             _context = context;
         }

@@ -15,3 +15,4 @@ C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\obj\Debug\net
 C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\obj\Debug\net8.0\refint\AcademiaApp.servico.dll
 C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\obj\Debug\net8.0\AcademiaApp.servico.pdb
 C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\obj\Debug\net8.0\ref\AcademiaApp.servico.dll
+C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.servico\obj\Debug\net8.0\AcademiaApp.servico.sourcelink.json
