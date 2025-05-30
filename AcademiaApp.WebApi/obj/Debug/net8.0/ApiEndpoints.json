@@ -142,18 +142,24 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AcademiaApp.API.Controllers.ProfessorController",
-    "Method": "ObterTodos",
-    "RelativePath": "api/professor",
-    "HttpMethod": "GET",
+    "ContainingType": "AcademiaApp.API.Controllers.AlunoController",
+    "Method": "Login",
+    "RelativePath": "api/aluno/login",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "aluno",
+        "Type": "AcademiaApp.Dominio.Aluno",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "AcademiaApp.API.Controllers.ProfessorController",
-    "Method": "ObterPorId",
+    "Method": "ObterProfessor",
     "RelativePath": "api/professor/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -177,8 +183,8 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       },
       {
         "Name": "professor",
@@ -198,8 +204,8 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

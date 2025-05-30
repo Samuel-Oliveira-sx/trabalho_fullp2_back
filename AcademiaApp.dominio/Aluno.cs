@@ -15,32 +15,30 @@ namespace AcademiaApp.Dominio
         public string Email { get; set; } = string.Empty;
 
         [JsonPropertyName("senha")]
-        public string Senha { get; set; }
+        public string Senha { get; set; } = string.Empty;
 
         [JsonPropertyName("cpf")]
-        public string CPF { get; set; }
+        public string CPF { get; set; } = string.Empty;
 
         [JsonPropertyName("dataNascimento")]
-        public DateTime DataNascimento { get; set; }
+        public DateTime DataNascimento { get; set; } = DateTime.MinValue;
 
-        [JsonPropertyName("dataMatricula")]
-        public DateTime DataMatricula { get; set; }
-
-        [JsonPropertyName("ativo")]
-        public bool Ativo { get; set; }
-
-        public Aluno(string cpf, string nome, string email, string senha, DateTime dataNascimento, DateTime dataMatricula)
+        // Construtor atualizado para garantir valores não nulos
+        public Aluno(string cpf, string nome, string email, string senha, DateTime dataNascimento)
         {
             CPF = cpf;
             Nome = nome;
             Email = email;
             Senha = senha;
             DataNascimento = dataNascimento;
-            DataMatricula = dataMatricula;
-            Ativo = true;
+
+            Console.WriteLine($"Novo aluno criado: {Nome}, {Email}, {CPF}, {DataNascimento.ToShortDateString()}");
         }
 
-        public Aluno() { }
+        public Aluno()
+        {
+            Console.WriteLine("Aluno criado sem parâmetros.");
+        }
 
         public int CalcularIdade()
         {
@@ -48,11 +46,6 @@ namespace AcademiaApp.Dominio
             var idade = hoje.Year - DataNascimento.Year;
             if (DataNascimento.Date > hoje.AddYears(-idade)) idade--;
             return idade;
-        }
-
-        public void CancelarMatricula()
-        {
-            Ativo = false;
         }
     }
 }

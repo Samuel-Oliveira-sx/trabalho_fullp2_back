@@ -4,7 +4,6 @@ using AcademiaApp.Dominio;
 using AcademiaApp.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -42,33 +41,30 @@ namespace AcademiaApp.API.Controllers
         }
 
         [HttpGet("{id?}")]
-        public async Task<IActionResult> ObterPorId(int? id)
+        public async Task<IActionResult> ObterProfessor(int? id)
         {
-            if (id == null)
-                return BadRequest(new { Message = "O ID precisa ser informado!" });
+            if (id.HasValue)
+            {
+                var professor = await _context.Professores.FindAsync(id);
+                if (professor == null)
+                    return NotFound(new { Message = "Professor não encontrado!" });
 
-            var professor = await _context.Professores.FindAsync(id);
+                return Ok(professor);
+            }
 
-            if (professor == null)
-                return NotFound(new { Message = "Professor não encontrado!" });
-
-            return Ok(professor);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> ObterTodos()
-        {
             var professores = await _context.Professores.ToListAsync();
-
             if (!professores.Any())
                 return NoContent();
 
             return Ok(professores);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Atualizar(int id, [FromBody] Professor professor)
+        [HttpPut("{id?}")]
+        public async Task<IActionResult> Atualizar(int? id, [FromBody] Professor professor)
         {
+            if (!id.HasValue)
+                return BadRequest(new { Message = "ID não informado! Para atualizar, forneça um ID." });
+
             var professorExistente = await _context.Professores.FindAsync(id);
 
             if (professorExistente == null)
@@ -83,9 +79,12 @@ namespace AcademiaApp.API.Controllers
             return Ok(new { Message = "Dados do professor atualizados!", Professor = professorExistente });
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Remover(int id)
+        [HttpDelete("{id?}")]
+        public async Task<IActionResult> Remover(int? id)
         {
+            if (!id.HasValue)
+                return BadRequest(new { Message = "ID não informado! Para remover, forneça um ID." });
+
             var professorExistente = await _context.Professores.FindAsync(id);
 
             if (professorExistente == null)

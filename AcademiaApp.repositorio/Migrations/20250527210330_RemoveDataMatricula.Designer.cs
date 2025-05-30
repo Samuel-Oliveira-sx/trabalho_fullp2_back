@@ -3,6 +3,7 @@ using System;
 using AcademiaApp.Repositorio;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AcademiaApp.repositorio.Migrations
 {
     [DbContext(typeof(AcademiaDbContext))]
-    partial class AcademiaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250527210330_RemoveDataMatricula")]
+    partial class RemoveDataMatricula
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.5");
@@ -46,6 +49,10 @@ namespace AcademiaApp.repositorio.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
                         .HasAnnotation("Relational:JsonPropertyName", "id");
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("INTEGER")
+                        .HasAnnotation("Relational:JsonPropertyName", "ativo");
 
                     b.Property<string>("CPF")
                         .IsRequired()

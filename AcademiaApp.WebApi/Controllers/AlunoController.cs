@@ -19,21 +19,29 @@ namespace AcademiaApp.API.Controllers
         }
 
         /// <summary>
+        /// Autentica um aluno no sistema.
+        /// </summary>
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] Aluno aluno)
+        {
+            if (aluno == null)
+                return BadRequest(new { Message = "Dados inválidos!" });
+
+            var alunoExistente = await _context.Alunos
+                .FirstOrDefaultAsync(a => a.Email == aluno.Email && a.Senha == aluno.Senha);
+
+            if (alunoExistente == null)
+                return Unauthorized(new { Message = "Credenciais inválidas!" });
+
+            return Ok(new { Message = "Login realizado com sucesso!", Aluno = alunoExistente });
+        }
+
+        /// <summary>
         /// Obtém todos os alunos cadastrados.
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> ObterTodos()
         {
-            Console.WriteLine($"✅ Banco conectado: {_context.Database.ProviderName}");
-            Console.WriteLine($"🛠️ String de conexão: {_context.Database.GetConnectionString()}");
-
-            var tabelaExiste = await _context.Database.ExecuteSqlRawAsync("SELECT name FROM sqlite_master WHERE type='table' AND name='Alunos';");
-            if (tabelaExiste == 0)
-            {
-                Console.WriteLine("❌ A tabela `Alunos` não existe no banco! Verifique as migrations.");
-                return NotFound(new { Message = "Erro: A tabela `Alunos` não foi encontrada no banco de dados!" });
-            }
-
             var alunos = await _context.Alunos
                 .Select(a => new
                 {
@@ -42,19 +50,12 @@ namespace AcademiaApp.API.Controllers
                     a.Email,
                     a.CPF,
                     a.Senha,
-                    a.DataNascimento,
-                    a.DataMatricula,
-                    a.Ativo
+                    a.DataNascimento
                 })
                 .ToListAsync();
 
-            Console.WriteLine($"🔥 Total de alunos encontrados no banco: {alunos.Count}");
-
             if (!alunos.Any())
-            {
-                Console.WriteLine("❌ Nenhum aluno encontrado! Certifique-se de que os registros existem no banco.");
                 return NotFound(new { Message = "Nenhum aluno encontrado no banco de dados!" });
-            }
 
             return Ok(alunos);
         }

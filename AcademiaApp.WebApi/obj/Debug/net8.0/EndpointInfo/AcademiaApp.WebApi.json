@@ -137,6 +137,37 @@
         }
       }
     },
+    "/api/aluno/login": {
+      "post": {
+        "tags": [
+          "Aluno"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Aluno"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Aluno"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Aluno"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/aluno": {
       "get": {
         "tags": [
@@ -388,18 +419,6 @@
           }
         }
       }
-    },
-    "/api/professor": {
-      "get": {
-        "tags": [
-          "Professor"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
     }
   },
   "components": {
@@ -455,13 +474,6 @@
           "dataNascimento": {
             "type": "string",
             "format": "date-time"
-          },
-          "dataMatricula": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "ativo": {
-            "type": "boolean"
           }
         },
         "additionalProperties": false

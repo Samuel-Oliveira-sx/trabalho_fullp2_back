@@ -2,10 +2,10 @@
 
 using AcademiaApp.Dominio;
 using AcademiaApp.Dominio.Repositorios;
-using AcademiaApp.Servico;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace AcademiaApp.Servico.IProfessorServico
+namespace AcademiaApp.Servico
 {
     public class ProfessorServico : IProfessorServico
     {
@@ -16,23 +16,62 @@ namespace AcademiaApp.Servico.IProfessorServico
             _professorRepositorio = professorRepositorio;
         }
 
-        public void Cadastrar(Professor professor)
+        // Métodos assíncronos
+        public async Task<Professor?> ObterPorIdAsync(int id)
         {
-            _professorRepositorio.Adicionar(professor);
+            return await _professorRepositorio.ObterPorIdAsync(id);
         }
 
-        public Professor ObterPorId(int id)
+        public async Task<IEnumerable<Professor>> ObterTodosAsync()
         {
-            return _professorRepositorio.ObterPorId(id);
+            return await _professorRepositorio.ObterTodosAsync() ?? new List<Professor>();
+        }
+
+        public async Task CadastrarProfessorAsync(Professor professor)
+        {
+            if (professor == null)
+                throw new ArgumentNullException(nameof(professor));
+
+            await _professorRepositorio.AdicionarAsync(professor);
+        }
+
+        public async Task AtualizarProfessorAsync(Professor professor)
+        {
+            if (professor == null)
+                throw new ArgumentNullException(nameof(professor));
+
+            await _professorRepositorio.AtualizarAsync(professor);
+        }
+
+        public async Task RemoverProfessorAsync(int id)
+        {
+            await _professorRepositorio.RemoverAsync(id);
+        }
+
+        // Métodos síncronos
+        public void Cadastrar(Professor professor)
+        {
+            if (professor == null)
+                throw new ArgumentNullException(nameof(professor));
+
+            _professorRepositorio.Adicionar(professor);
         }
 
         public IEnumerable<Professor> ObterTodos()
         {
-            return _professorRepositorio.ObterTodos();
+            return _professorRepositorio.ObterTodos() ?? new List<Professor>();
+        }
+
+        public Professor? ObterPorId(int id)
+        {
+            return _professorRepositorio.ObterPorId(id);
         }
 
         public void Atualizar(Professor professor)
         {
+            if (professor == null)
+                throw new ArgumentNullException(nameof(professor));
+
             _professorRepositorio.Atualizar(professor);
         }
 
@@ -40,57 +79,5 @@ namespace AcademiaApp.Servico.IProfessorServico
         {
             _professorRepositorio.Remover(id);
         }
-
-        public Task<Professor> ObterPorIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Professor>> ObterTodosAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task CadastrarProfessorAsync(Professor professor)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task AtualizarProfessorAsync(Professor professor)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task RemoverProfessorAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> VerificarPlanoAtivoAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        object IProfessorServico.ObterTodos()
-        {
-            return ObterTodos();
-        }
-
-        object IProfessorServico.ObterPorId(int id)
-        {
-            return ObterPorId(id);
-        }
-
-        Task<Professor> IProfessorServico.ObterPorIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<IEnumerable<Professor>> IProfessorServico.ObterTodosAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-       
     }
 }

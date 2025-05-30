@@ -169,4 +169,3 @@ C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.WebApi\bin\Debug\net8
 C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.WebApi\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.WebApi\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.WebApi\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\Users\Samuel\Desktop\TrabalhoP2\AcademiaApp\AcademiaApp.WebApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
